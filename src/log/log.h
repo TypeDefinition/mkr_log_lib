@@ -1,5 +1,6 @@
 #pragma once
 
+#include <utility>
 #include <string>
 #include <spdlog/spdlog.h>
 #include <spdlog/async.h>
@@ -29,33 +30,33 @@ namespace mkr {
         static void exit();
 
         template<typename... Args>
-        static void trace(std::string _fmt, const Args& ... _args) {
-            logger_->trace(_fmt, _args...);
+        static void trace(std::string _fmt, Args&& ... _args) {
+            logger_->trace(fmt::runtime(_fmt), std::forward<Args>(_args)...);
         }
 
         template<typename... Args>
-        static void debug(std::string _fmt, const Args& ... _args) {
-            logger_->debug(_fmt, _args...);
+        static void debug(std::string _fmt, Args&& ... _args) {
+            logger_->debug(fmt::runtime(_fmt), std::forward<Args>(_args)...);
         }
 
         template<typename... Args>
-        static void info(std::string _fmt, const Args& ... _args) {
-            logger_->info(_fmt, _args...);
+        static void info(std::string _fmt, Args&& ... _args) {
+            logger_->info(fmt::runtime(_fmt), std::forward<Args>(_args)...);
         }
 
         template<typename... Args>
-        static void warn(std::string _fmt, const Args& ... _args) {
-            logger_->warn(_fmt, _args...);
+        static void warn(std::string _fmt, Args&& ... _args) {
+            logger_->warn(fmt::runtime(_fmt), std::forward<Args>(_args)...);
         }
 
         template<typename... Args>
-        static void error(std::string _fmt, const Args& ... _args) {
-            logger_->error(_fmt, _args...);
+        static void error(std::string _fmt, Args&& ... _args) {
+            logger_->error(fmt::runtime(_fmt), std::forward<Args>(_args)...);
         }
 
         template<typename... Args>
-        static void critical(std::string _fmt, const Args& ... _args) {
-            logger_->critical(_fmt, _args...);
+        static void critical(std::string _fmt, Args&& ... _args) {
+            logger_->critical(fmt::runtime(_fmt), std::forward<Args>(_args)...);
         }
     };
 }
