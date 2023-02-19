@@ -25,7 +25,7 @@ add_library(${PROJECT_NAME} ${SRC_FILES})
 
 # External Dependencies
 # spdlog: https://github.com/gabime/spdlog
-FetchContent_Declare(spdlog GIT_REPOSITORY https://github.com/gabime/spdlog.git GIT_TAG 5a589438d2d2abc67bdbec2aad7e2a94800c00ea)
+FetchContent_Declare(spdlog GIT_REPOSITORY https://github.com/gabime/spdlog.git GIT_TAG da14258533cb951ce85087ceb45556e0b8253660)
 FetchContent_MakeAvailable(spdlog)
 
 # Target
